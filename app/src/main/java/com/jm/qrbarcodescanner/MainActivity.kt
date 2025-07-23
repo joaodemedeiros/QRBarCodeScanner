@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.codegalaxy.barcodescanner.ui.theme.BarCodeScannerTheme
 import com.jm.qrbarcodescanner.presentation.BarCodeScannerViewModel
 import com.jm.qrbarcodescanner.presentation.BarcodeScannerScreen
+import com.jm.qrbarcodescanner.ui.theme.BarCodeScannerTheme
 
 class MainActivity : ComponentActivity() {
 
