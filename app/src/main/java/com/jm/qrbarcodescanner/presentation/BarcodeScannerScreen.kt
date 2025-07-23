@@ -29,7 +29,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
@@ -42,14 +41,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.Scaffold
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.jm.qrbarcodescanner.model.BarCodeAnalyzer
-import com.jm.qrbarcodescanner.model.json.BarModel
 
 /**
  * Main Composable that manages camera permission requests and displays
  * either the scanner screen or a message to grant permission.
  *
- * @param viewModel Instance of [com.codegalaxy.barcodescanner.presentation.BarCodeScannerViewModel] to handle scanning logic.
+ * @param viewModel Instance of [com.jm.barcodescanner.presentation.BarCodeScannerViewModel] to handle scanning logic.
  */
 @Composable
 fun BarcodeScannerScreen( // This is the main entry point Composable for the barcode scanning feature.
@@ -127,7 +126,7 @@ fun CameraPreview(viewModel: BarCodeScannerViewModel) { // This Composable handl
         }
     }
 
-    Scaffold {
+    Scaffold { it ->
         Column { // Arranges the preview and scan information vertically.
             Box(
                 modifier = Modifier
