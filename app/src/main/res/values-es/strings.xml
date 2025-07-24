@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QRBarCodeScanner</string>
+    <string name="scan_another">Escanear Otro</string>
+    <string name="format">Formato</string>
+    <string name="value">Contenido</string>
+    <string name="initial_state">Coloca el código frente a la cámara</string>"
+    <string name="try_again">Intentalo de nuevo</string>"
+    <string name="camera_permission">Se requiere permiso de la cámara para escanear códigos</string>
+    <string name="grant_permission">Conceder Permiso</string>
+</resources>

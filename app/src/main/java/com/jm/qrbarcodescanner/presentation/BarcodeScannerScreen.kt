@@ -39,16 +39,18 @@ import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.Scaffold
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.jm.qrbarcodescanner.R
 import com.jm.qrbarcodescanner.model.BarCodeAnalyzer
 
 /**
  * Main Composable that manages camera permission requests and displays
  * either the scanner screen or a message to grant permission.
  *
- * @param viewModel Instance of [com.jm.barcodescanner.presentation.BarCodeScannerViewModel] to handle scanning logic.
+ * @param viewModel Instance to handle scanning logic.
  */
 @Composable
 fun BarcodeScannerScreen( // This is the main entry point Composable for the barcode scanning feature.
@@ -57,7 +59,7 @@ fun BarcodeScannerScreen( // This is the main entry point Composable for the bar
     val context = LocalContext.current // Gets the current Android Context.
     // State to track if camera permission has been granted.
     var hasCameraPermission by remember { // `remember` stores the state across recompositions.
-        mutableStateOf( // `mutableStateOf` creates an observable state; when it changes, Compose reruns relevant Composables.
+        mutableStateOf( // `mutableStateOf` creates an observable state; when it changes, Compose reruns.
             ContextCompat.checkSelfPermission(
                 context,
                 Manifest.permission.CAMERA
@@ -92,9 +94,9 @@ fun BarcodeScannerScreen( // This is the main entry point Composable for the bar
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text("Camera permission is required for scanning barcodes")
+            Text(stringResource(id = R.string.camera_permission))
             Button(onClick = { launcher.launch(Manifest.permission.CAMERA) }) {
-                Text("Grant Permission")
+                Text(stringResource(id = R.string.grant_permission))
             }
         }
     }
@@ -220,7 +222,7 @@ fun CameraPreview(viewModel: BarCodeScannerViewModel) { // This Composable handl
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text("Position the barcode in front of the camera.")
+                        Text(stringResource(id = R.string.initial_state))
                     }
                 }
 
@@ -255,7 +257,7 @@ fun CameraPreview(viewModel: BarCodeScannerViewModel) { // This Composable handl
                         Text("Error: ${barScanState.error}")
                         Spacer(modifier = Modifier.height(16.dp))
                         Button(onClick = { viewModel.resetState() }) {
-                            Text("Try Again")
+                            Text(stringResource(id = R.string.try_again))
                         }
                     }
                 }
@@ -275,8 +277,7 @@ fun CameraPreview(viewModel: BarCodeScannerViewModel) { // This Composable handl
 fun ScanResultContent(
     scanSuccess: BarScanState.ScanSuccess,
     onRescan: () -> Unit
-) { // Displays the result of a successful scan.
-
+) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -295,14 +296,14 @@ fun ScanResultContent(
             Text("Total Amount: $${scanSuccess.barStateModel.totalAmount}")
         } else {
             // If not parseable as JSON or not JSON, display raw format and value.
-            Text("Format: ${scanSuccess.format}", style = MaterialTheme.typography.titleMedium)
+            Text("${stringResource(id = R.string.format)}: ${scanSuccess.format}", style = MaterialTheme.typography.titleMedium)
             Spacer(modifier = Modifier.height(8.dp))
-            Text("Value: ${scanSuccess.rawValue}")
+            Text("${stringResource(id = R.string.value)}: ${scanSuccess.rawValue}")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = onRescan) { // Button to scan another barcode.
-            Text("Scan Another")
+        Button(onClick = onRescan) {
+            Text(text= stringResource(id = R.string.scan_another))
         }
     }
 
