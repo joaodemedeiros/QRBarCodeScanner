@@ -1,4 +1,4 @@
-package com.jm.qrbarcodescanner.ui.theme
+package com.jm.qrbarcodescanner.presentation.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

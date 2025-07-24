@@ -11,7 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.jm.qrbarcodescanner.presentation.BarCodeScannerViewModel
 import com.jm.qrbarcodescanner.presentation.BarcodeScannerScreen
-import com.jm.qrbarcodescanner.ui.theme.BarCodeScannerTheme
+import com.jm.qrbarcodescanner.presentation.ui.theme.BarCodeScannerTheme
 
 class MainActivity : ComponentActivity() {
 

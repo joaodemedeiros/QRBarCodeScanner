@@ -1,4 +1,4 @@
-package com.jm.qrbarcodescanner.ui.theme
+package com.jm.qrbarcodescanner.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
