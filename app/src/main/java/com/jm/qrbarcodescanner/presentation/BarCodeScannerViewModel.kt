@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope // Provides a coroutine scope tied to the ViewModel's lifecycle.
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.jm.qrbarcodescanner.model.json.BarModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.launch // Builder for launching coroutines.
 import kotlinx.serialization.json.Json
 
@@ -54,7 +56,8 @@ sealed interface BarScanState {
  * Manages the scan state and interaction with ML Kit.
  * Inherits from AndroidX `ViewModel` for lifecycle awareness.
  */
-class BarCodeScannerViewModel : ViewModel() {
+@HiltViewModel
+class BarCodeScannerViewModel @Inject constructor() : ViewModel() {
     // JSON parser configuration, lenient to ignore unknown keys and minor errors.
     private val jsonParser = Json {
         ignoreUnknownKeys = true

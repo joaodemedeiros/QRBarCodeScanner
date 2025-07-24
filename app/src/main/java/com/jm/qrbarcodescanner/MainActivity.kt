@@ -12,7 +12,9 @@ import androidx.compose.ui.Modifier
 import com.jm.qrbarcodescanner.presentation.BarCodeScannerViewModel
 import com.jm.qrbarcodescanner.presentation.BarcodeScannerScreen
 import com.jm.qrbarcodescanner.presentation.ui.theme.BarCodeScannerTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel: BarCodeScannerViewModel by viewModels()
